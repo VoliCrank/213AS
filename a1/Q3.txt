@@ -1,0 +1,3 @@
+0xffffffff is -1
+where big endian = little endian
+Any 4 byte integer that is symmetrical. In the form XY JK JK XY

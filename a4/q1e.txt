@@ -1,0 +1,2 @@
+I believe I am passing in a integer as an argument to a %s, which accepts chars
+I need to change %s to %d

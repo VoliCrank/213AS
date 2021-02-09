@@ -1,0 +1,12 @@
+./aRead 1000 -> 0m0.017s
+./sRead 1000 -> 0m10.996s
+
+./aRead 100  -> 0m0.014s
+./sRead 100  -> 0m1.104s
+
+./aRead 10   -> 0m0.014s
+./sRead 10   -> 0m0.113s
+
+Observation: sRead is consistently slower than aRead and aRead's runtime is nearly constantly regardless of input size.
+
+why: aRead is much faster because it doesn't have to wait for one disk read to finish to read the next one. Asynchrony means it can wait for the disk reads in parallel so that when the reads finish aRead can return immediately. Since one read is around 10ms, is is not surprising that aRead takes a little bit more than 10ms to process all the reads and to queue them.

@@ -1,0 +1,1 @@
+The bug came from the sharing of pointer between the tree and the list. When the pointer is being freed, it was being free twice (Once in the tree and once in the list). We can fix this problem by using reference counting. Count the number of pointer references, before actually free the memory.

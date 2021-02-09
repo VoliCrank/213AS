@@ -1,0 +1,8 @@
+./sRead 1000 -> 0m10.996s
+./sRead 100  -> 0m1.104s
+./sRead 10   -> 0m0.113s
+
+Observation: with more reads, the program takes longer to run.
+
+Explanation: It is due to the fact that the cpu is just waiting for one read to finish until moving onto the next one
+And since disk reads are relatively slow, calls to sRead with larger numbers take longer to finish.

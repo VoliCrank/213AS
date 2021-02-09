@@ -1,0 +1,84 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+////////////
+/// definition of struct's accessed by q1.s
+///
+
+struct B {
+  int    y[4];
+  struct A* a;
+};
+
+struct A {
+  int*     x;
+  struct B b;
+};
+
+////////////
+/// declaration of global variables found in q1.s
+///
+
+struct A* a;
+int    i, v0, v1, v2, v3;
+
+
+///////////
+/// your implementation of code found in q1.s
+///
+
+void q1() {
+  // TODO
+  //S1
+  int *ptr = (*a).x+i;
+  v0 = *ptr;
+
+  //S2
+  int *ptr2 = &a->b.y[i];
+  v1 = *ptr2;
+
+  //S3
+  int * ptr3 = a->b.a->x+i;
+  int * temp = &a->b.y[0];
+  v2 = *ptr3;
+
+  //S4
+  a->b.a = a;
+
+//S5
+int *ptr5 = temp + i;
+v3 = *ptr5;
+
+}
+
+////////////
+/// test harness (run with no args for default values; you code must work for arbitrary)
+///
+
+int main (int ac, char** av) {
+  /* dynamic allocation and default values for variables and objects found in q1.s */
+  a         = malloc (sizeof (struct A));
+  a->b.a    = malloc (sizeof (struct A));
+  a->x      = malloc (4 * sizeof (int));
+  a->b.a->x = malloc (4 * sizeof (int));
+  i = 1;
+  a->x[0]        = 10; a->x[1]        = 11; a->x[2]        = 12; a->x[3]        = 13;
+  a->b.y[0]      = 20; a->b.y[1]      = 21; a->b.y[2]      = 22; a->b.y[3]      = 23;
+  a->b.a->x[0]   = 30; a->b.a->x[1]   = 31; a->b.a->x[2]   = 32; a->b.a->x[3]   = 33;
+  a->b.a->b.y[0] = 40; a->b.a->b.y[1] = 41; a->b.a->b.y[2] = 42; a->b.a->b.y[3] = 43;
+
+  /* alternate initialization from command line (for marking) */
+  if (ac == 18) {
+    i = atoi(av[1]);
+    a->x[0]        = atoi(av[2]);  a->x[1]        = atoi(av[3]);  a->x[2]        = atoi(av[4]);  a->x[3]        = atoi(av[5]);
+    a->b.y[0]      = atoi(av[6]);  a->b.y[1]      = atoi(av[7]);  a->b.y[2]      = atoi(av[8]);  a->b.y[3]      = atoi(av[9]);
+    a->b.a->x[0]   = atoi(av[10]); a->b.a->x[1]   = atoi(av[11]); a->b.a->x[2]   = atoi(av[12]); a->b.a->x[3]   = atoi(av[13]);
+    a->b.a->b.y[0] = atoi(av[14]); a->b.a->b.y[1] = atoi(av[15]); a->b.a->b.y[2] = atoi(av[16]); a->b.a->b.y[3] = atoi(av[17]);
+  }
+
+  /* run your code for q1.s */
+  q1();
+
+  /* print some results for marking */
+  printf ("%d %d %d %d\n", v0, v1, v2, v3);
+}

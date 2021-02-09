@@ -1,0 +1,3 @@
+RA: 0x65F60700
+D: 0xB391DDFF
+The difference is that Intel uses little-endian while NASA uses big-endian, so I have to reverse the order of the hex representation.

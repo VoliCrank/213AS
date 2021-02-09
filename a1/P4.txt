@@ -1,0 +1,54 @@
+// high edge
+java Endianness 01 02 03 ff
+Memory Contents
+  Addr   Value
+    0:   0x1    
+    1:   0x2    
+    2:   0x3    
+    3:   0xff   
+The big    endian integer value at address 0 is 16909311
+The little endian integer value at address 0 is -16580095
+
+//equal little and big value, eight-bit is 1
+java Endianness ff ff ff ff
+Memory Contents
+  Addr   Value
+    0:   0xff   
+    1:   0xff   
+    2:   0xff   
+    3:   0xff   
+The big    endian integer value at address 0 is -1
+The little endian integer value at address 0 is -1
+
+//high-edge
+Java Endianness 01 00 00 00
+Memory Contents
+  Addr   Value
+    0:   0x1    
+    1:   0x0    
+    2:   0x0    
+    3:   0x0    
+The big    endian integer value at address 0 is 16777216
+The little endian integer value at address 0 is 1
+
+//reverse high-edge
+Java Endianness 00 00 00 01
+Memory Contents
+  Addr   Value
+    0:   0x0    
+    1:   0x0    
+    2:   0x0    
+    3:   0x1    
+The big    endian integer value at address 0 is 1
+The little endian integer value at address 0 is 16777216
+
+//high mid
+Java Endianness 00 80 ff 00
+Memory Contents
+  Addr   Value
+    0:   0x0    
+    1:   0x80   
+    2:   0xff   
+    3:   0x0    
+The big    endian integer value at address 0 is 8453888
+The little endian integer value at address 0 is 16744448

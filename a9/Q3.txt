@@ -1,0 +1,12 @@
+./aRead 1000 -> 0m0.017s
+./tRead 1000 -> 0m0.033s
+
+./aRead 100  -> 0m0.014s
+./tRead 100  -> 0m0.015s
+
+./aRead 10   -> 0m0.014s
+./tRead 10   -> 0m0.013s
+
+Observation: The read times for tRead is longer than that of aRead but not as slow as sRead for each of the different amounts
+
+Explanation: It can be quick because tRead uses threads so that each read is blocked when the thread is simply waiting on the disk read. It might not be as fast as aRead because switching threads might take some more time. The cost of hiding asynchrony is having longer run time.

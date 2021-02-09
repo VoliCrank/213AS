@@ -1,0 +1,12 @@
+Loading:
+1. load value of i
+2. load value of a (which is an address)
+3. load a* (load the value from the address stored in a)
+4. load a->x[i]
+5. load a->b.a
+6. load a->b.y[i]
+7  load address of a->b.a
+8. load a->b.a->x[i]
+
+Write:
+Storing the values into v0,v1,v2,v3 and a->b.a = a's address. So, 5 times in total.
